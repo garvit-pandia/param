@@ -6,20 +6,19 @@ The files live in `images/` and are wired up in `data/images.ts`.
 
 ## 3D icons (`images/3d/`)
 
-All from **3dicons** by Vijay Verma (https://3dicons.co, source at https://github.com/realvjy/3dicons), "color" style, "dynamic" angle. Licence: CC0 1.0.
+All from **3dicons** by Vijay Verma (https://3dicons.co, source at https://github.com/realvjy/3dicons), "gradient" style, "dynamic" angle. Licence: CC0 1.0. The site shifts their colour towards blue with a CSS filter (`.icon3d` in `app/globals.css`); the files themselves are unchanged.
 
-`bag`, `bulb`, `chart`, `clock`, `color-palette`, `computer`, `cube`, `flash`, `folder`, `key`, `lock`, `locker`, `medal`, `megaphone`, `mobile`, `notebook`, `paint-kit`, `pencil`, `rocket`, `roll-brush`, `rupee`, `shield` (named `sheild` at the source), `target`, `tick`, `zoom`.
+`chat-bubble`, `computer`, `file-text`, `flash`, `lock`, `paint-kit`, `rocket`, `rupee`, `shield` (named `sheild` at the source), `thumb-up`.
 
 ## Photos (`images/photos/`)
 
 | File | Used for | Source | Licence |
 |---|---|---|---|
-| `laptop-code.jpg` | Hero, link preview image | "A laptop with illuminated keyboard and green code" by Sachinraj CP, WordPress Photo Directory: https://wordpress.org/photos/photo/73365c4fba/ | CC0 |
-| `code-screen.webp` | About us (large photo) | rawpixel: https://www.rawpixel.com/image/5924954/photo-image-background-public-domain-technology | CC0 |
-| `wireframes.webp` | About us (small photo) | rawpixel: https://www.rawpixel.com/image/5926265/photo-image-paper-public-domain-art | CC0 |
-| `padlocks.webp` | Why choose us | rawpixel: https://www.rawpixel.com/image/5910046/photo-image-background-public-domain-technology | CC0 |
-| `circuit.webp` | Our Services (centre piece) | rawpixel: https://www.rawpixel.com/image/5912614/image-public-domain-technology-computer | CC0 |
-| `matrix.webp` | Call-to-action background | rawpixel: https://www.rawpixel.com/image/5901986/free-matrix-background-public-domain-cc0-photo | CC0 |
+| `laptop-code.webp` | Hero, link preview image | "Coding on a computer screen" by Markus Spiske, via rawpixel: https://www.rawpixel.com/image/432709/free-photo-image-java-source-code-computer-programming | CC0 |
+| `circuit-chip.webp` | Cybersecurity card | "Computer Circuit Board Macro", rawpixel: https://www.rawpixel.com/image/5966842/computer-circuit-board-macro | CC0 |
+| `wireframes.webp` | Graphic Design card | rawpixel: https://www.rawpixel.com/image/5926265/photo-image-paper-public-domain-art | CC0 |
+| `code-screen.webp` | Web Development card, call-to-action background | "Coding on a computer screen" by Markus Spiske, via rawpixel: https://www.rawpixel.com/image/432378/free-photo-image-software-programming-computer | CC0 |
+| `server-room.webp` | About us | "Free computer server room image", rawpixel: https://www.rawpixel.com/image/5906639/photo-image-light-desktop-wallpapers-public-domain | CC0 |
 
 The photos were found through Openverse (https://openverse.org) with the search limited to CC0 and public-domain results.
 
