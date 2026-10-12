@@ -127,18 +127,4 @@ export const catalog: Category[] = [
       { name: "Dreamlit Pro", validity: "6 Months" },
     ],
   },
-  {
-    id: "lifetime",
-    label: "Lifetime / Keys",
-    title: "Lifetime & Keys",
-    products: [
-      { name: "Windows 10/11 Pro", validity: "Lifetime" },
-      { name: "Office 2019 / 2021 Professional Plus", validity: "Lifetime" },
-      { name: "Office 365 (5 Devices + 5TB Cloud)", validity: "Lifetime" },
-      { name: "Windows 10 / 11 Enterprise LTSC", validity: "Lifetime" },
-      { name: "Visio / Project 2021 Professional Plus", validity: "Lifetime" },
-      { name: "Rezi AI", validity: "Lifetime" },
-      { name: "PNGTree Premium", validity: "Lifetime" },
-    ],
-  },
 ];
