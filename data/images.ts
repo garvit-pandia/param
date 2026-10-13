@@ -1,23 +1,15 @@
 // Every picture on the site is imported here, so swapping one is a one-line change.
 // Sources and licences are listed in docs/image-credits.md.
-import bag from "@/images/3d/bag.png";
 import bulb from "@/images/3d/bulb.png";
 import chart from "@/images/3d/chart.png";
-import clock from "@/images/3d/clock.png";
-import colorPalette from "@/images/3d/color-palette.png";
 import computer from "@/images/3d/computer.png";
 import cube from "@/images/3d/cube.png";
 import flash from "@/images/3d/flash.png";
 import folder from "@/images/3d/folder.png";
-import key from "@/images/3d/key.png";
 import lock from "@/images/3d/lock.png";
-import locker from "@/images/3d/locker.png";
 import medal from "@/images/3d/medal.png";
-import megaphone from "@/images/3d/megaphone.png";
 import mobile from "@/images/3d/mobile.png";
 import notebook from "@/images/3d/notebook.png";
-import paintKit from "@/images/3d/paint-kit.png";
-import pencil from "@/images/3d/pencil.png";
 import rocket from "@/images/3d/rocket.png";
 import rollBrush from "@/images/3d/roll-brush.png";
 import rupee from "@/images/3d/rupee.png";
@@ -31,35 +23,32 @@ import laptopCode from "@/images/photos/laptop-code.jpg";
 import matrix from "@/images/photos/matrix.webp";
 import padlocks from "@/images/photos/padlocks.webp";
 import wireframes from "@/images/photos/wireframes.webp";
+import architect from "@/images/work/architect.webp";
+import clinic from "@/images/work/clinic.webp";
+import photographer from "@/images/work/photographer.webp";
+import shivaay from "@/images/work/shivaay.webp";
+import umesh from "@/images/work/umesh.webp";
 
 export const photos = { circuit, codeScreen, laptopCode, matrix, padlocks, wireframes };
 
 /** Floating 3D icons used inside the large illustrations. */
 export const accents = { shield, lock, tick };
 
-// The keys below match the ids in data/services.ts and data/catalog.ts.
-export const pillarIcons = { security: shield, design: paintKit, web: computer };
+/** Screenshots of the websites in "Our Work". The keys match the ids in data/work.ts. */
+export const workShots = { shivaay, umesh, photographer, architect, clinic };
 
-export const statIcons = { tools: bag, categories: folder, genuine: tick, delivery: flash };
+// The keys below match the ids in data/services.ts.
+export const areaIcons = { software: computer, ai: flash, security: shield, saas: rocket };
 
-export const reasonIcons = { instant: rocket, private: lock, price: rupee, trusted: medal };
+export const statIcons = { areas: folder, sites: computer, checks: zoom, permission: tick };
+
+export const reasonIcons = { permission: lock, reports: notebook, team: medal, price: rupee };
 
 export const serviceIcons = {
-  vapt: target,
-  "web-security": zoom,
-  hardening: locker,
-  branding: rollBrush,
-  creatives: megaphone,
   websites: mobile,
-};
-
-export const tileIcons = {
-  all: cube,
-  "ai-dev": bulb,
-  design: colorPalette,
-  content: pencil,
-  business: chart,
-  edu: notebook,
-  "short-term": clock,
-  lifetime: key,
+  software: chart,
+  automation: bulb,
+  testing: target,
+  products: cube,
+  branding: rollBrush,
 };

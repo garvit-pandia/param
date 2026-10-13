@@ -52,7 +52,7 @@ export function Header() {
             </li>
             <li>
               <button type="button" className="btn" onClick={() => request()}>
-                Request Access
+                Contact Us
               </button>
             </li>
           </ul>

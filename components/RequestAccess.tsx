@@ -115,11 +115,11 @@ export function RequestProvider({ children }: { children: ReactNode }) {
 
             <div className="modal-header">
               <Mail className="header-icon" aria-hidden />
-              <h2 id="requestTitle">Request Access</h2>
+              <h2 id="requestTitle">Contact Us</h2>
             </div>
             <p className="modal-subtitle">
-              Fill out this form to request {siteName} services or premium
-              tools.
+              Fill out this form to ask about {siteName} services or request a
+              quote.
             </p>
 
             <form className="cyber-form" onSubmit={handleSubmit}>
@@ -226,7 +226,7 @@ export function useRequestAccess() {
 
 type RequestButtonProps = {
   className?: string;
-  /** Pre-fills the message box, e.g. a product or service name. */
+  /** Pre-fills the message box, e.g. a service name. */
   topic?: string;
   tabIndex?: number;
   children: ReactNode;

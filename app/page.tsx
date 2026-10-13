@@ -1,7 +1,6 @@
 import Image from "next/image";
-import { Check, CircleCheck, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, Check, CircleCheck, ShieldCheck } from "lucide-react";
 import { AboutArt, CoreArt, GuardArt, HeroArt, Icon3D } from "@/components/art";
-import { Catalog } from "@/components/Catalog";
 import { CountUp } from "@/components/CountUp";
 import { Header } from "@/components/Header";
 import { MobileCta } from "@/components/MobileCta";
@@ -10,25 +9,27 @@ import { Reveal } from "@/components/Reveal";
 import { LogoMark } from "@/components/graphics";
 import { faq } from "@/data/faq";
 import {
+  areaIcons,
   photos,
-  pillarIcons,
   reasonIcons,
   serviceIcons,
   statIcons,
+  workShots,
 } from "@/data/images";
 import {
+  areas,
   highlights,
-  pillars,
   reasons,
+  securityServices,
   serviceItems,
   stats,
-  tracks,
   type ServiceItem,
 } from "@/data/services";
 import { navLinks, site, siteName } from "@/data/site";
+import { work, workLabels } from "@/data/work";
 
 // Short promises shown under the hero button.
-const promises = ["Genuine activations", "Instant delivery", "Best price guarantee"];
+const promises = ["Written permission first", "Fixes ranked by risk", "A quote before work starts"];
 
 function ServiceColumn({ items, side }: { items: ServiceItem[]; side: "left" | "right" }) {
   return (
@@ -66,16 +67,15 @@ export default function Home() {
         <section id="home" className="hero">
           <div className="wrap hero-grid">
             <h1 className="hero-title">
-              Securing, Designing &amp; Building
+              Building, Automating &amp; Securing
               <br />
               <span className="green">Your Digital Presence</span>
             </h1>
             <div className="hero-copy">
               <p>
-                At <span className="green">{brand}</span>, we bring
-                cybersecurity, graphic design and website development together
-                under one roof, and supply premium tools and subscriptions at
-                the best prices.
+                At <span className="green">{brand}</span>, we build custom
+                software, automate the busywork with AI and test your defences
+                the way an attacker would, all under one roof.
               </p>
               <RequestButton className="btn btn-lg">
                 Get Started <span className="arrow">→</span>
@@ -97,51 +97,54 @@ export default function Home() {
 
         <section className="section section-tight">
           <div className="wrap pillar-grid">
-            {pillars.map((pillar, i) => {
+            {areas.map((area, i) => {
               return (
-                <Reveal key={pillar.id} delay={i * 150} className="pillar">
-                  <Icon3D src={pillarIcons[pillar.id]} size={84} className="pillar-art" />
-                  <h3>{pillar.title}</h3>
-                  <p>{pillar.text}</p>
+                <Reveal key={area.id} delay={i * 150} className="pillar">
+                  <Icon3D src={areaIcons[area.id]} size={84} className="pillar-art" />
+                  <h3>{area.title}</h3>
+                  <p>{area.text}</p>
                 </Reveal>
               );
             })}
           </div>
         </section>
 
-        <section className="section section-tight">
-          <div className="track-grid">
-            {tracks.map((track) => (
-              <div key={track.id} className={`plan-card plan-${track.id}`}>
-                <span className="pill-badge">{track.badge}</span>
-                <h2>{track.title}</h2>
-                <p className="plan-price">
-                  <strong>{track.price}</strong> <span>{track.priceNote}</span>
-                </p>
-                <p className="plan-summary">{track.summary}</p>
-                <ul className="check-list">
-                  {track.features.map((feature) => (
-                    <li key={feature}>
-                      <Check aria-hidden />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                {track.id === "catalog" ? (
-                  <a href="#catalog" className="btn btn-square btn-block">
-                    {track.cta}
-                  </a>
-                ) : (
-                  <RequestButton className="btn btn-square btn-block" topic="A project quote">
-                    {track.cta}
+        <section id="security" className="section">
+          <div className="wrap">
+            <div className="section-head">
+              <h2 className="section-kicker">
+                <span className="green">Security</span> Services
+              </h2>
+              <p>
+                Three ways we find the weak points in your business before
+                someone else does.
+              </p>
+            </div>
+            <div className="plan-grid">
+              {securityServices.map((service) => (
+                <div
+                  key={service.id}
+                  className={`plan-card${service.featured ? " plan-featured" : ""}`}
+                >
+                  <span className="pill-badge">{service.badge}</span>
+                  <h3>{service.title}</h3>
+                  <p className="plan-summary">{service.summary}</p>
+                  <ul className="check-list">
+                    {service.checks.map((check) => (
+                      <li key={check}>
+                        <Check aria-hidden />
+                        {check}
+                      </li>
+                    ))}
+                  </ul>
+                  <RequestButton className="btn btn-square btn-block" topic={service.title}>
+                    Get a Quote
                   </RequestButton>
-                )}
-              </div>
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
         </section>
-
-        <Catalog />
 
         <section id="about" className="section">
           <div className="wrap split">
@@ -153,13 +156,12 @@ export default function Home() {
               <h3 className="sub-display">Get To Know Who We Are</h3>
               <Reveal>
                 <p>
-                  {siteName} is a small team that secures businesses, designs
-                  their brands and builds their websites. We test your systems
-                  the way an attacker would, then help you fix what we find. We
-                  design the visuals your customers see, and we build the sites
-                  they land on. Alongside that work, we supply the premium
-                  tools professionals rely on, activated on your own account at
-                  the best price.
+                  {siteName} is a small team that builds software, automates
+                  business work and secures both. We build the websites, apps
+                  and dashboards your business runs on, and wire in AI where it
+                  saves your team real time. Then we test all of it the way an
+                  attacker would, check what the open internet already reveals
+                  about you, and help you fix what we find.
                 </p>
               </Reveal>
               <Reveal delay={300}>
@@ -200,12 +202,12 @@ export default function Home() {
             <div className="split-copy">
               <h2 className="display">Why choose us</h2>
               <h3 className="sub-display">
-                Security, Design &amp; Development Under One Roof
+                Build, Automate &amp; Secure Under One Roof
               </h3>
               <Reveal>
                 <p>
-                  One team for your security, your brand and your website, with
-                  premium tools on top.
+                  One team for your software, your automation and your
+                  security, so nothing gets lost between vendors.
                 </p>
               </Reveal>
               {reasons.map((reason, i) => {
@@ -234,9 +236,8 @@ export default function Home() {
               <h2 className="display">Our Services</h2>
               <h3 className="sub-display">Everything Your Business Needs Online</h3>
               <p>
-                From finding security holes to designing your brand and
-                launching your website, pick what you need and we handle the
-                rest.
+                From a first website to a full penetration test, pick what
+                you need and we handle the rest.
               </p>
             </div>
             <div className="service-layout">
@@ -249,16 +250,65 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="work" className="section">
+          <div className="wrap">
+            <div className="section-head">
+              <h2 className="display">Our Work</h2>
+              <h3 className="sub-display">Websites We Designed &amp; Built</h3>
+              <p>
+                Two sites running for real businesses and three concept
+                designs, all designed and coded in-house. Open any of them and
+                click around.
+              </p>
+            </div>
+            <div className="work-grid">
+              {work.map((item) => (
+                <a
+                  key={item.id}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`work-card work-${item.kind}`}
+                >
+                  <span className="pill-badge">{workLabels[item.kind]}</span>
+                  <div className="work-shot">
+                    <Image
+                      src={workShots[item.id]}
+                      alt={`Home page of the ${item.title} website`}
+                      sizes="(max-width: 900px) 92vw, (max-width: 1100px) 46vw, 640px"
+                      placeholder="blur"
+                    />
+                  </div>
+                  <div className="work-body">
+                    <span className="work-trade">{item.trade}</span>
+                    <h4>{item.title}</h4>
+                    <p>{item.text}</p>
+                    <span className="work-link">
+                      Visit Site <ArrowUpRight aria-hidden />
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+            <div className="work-cta">
+              <RequestButton className="btn" topic="A new website">
+                Get a Website Like These
+              </RequestButton>
+            </div>
+          </div>
+        </section>
+
         <section className="section cta-band">
           <Image src={photos.matrix} alt="" fill sizes="100vw" className="cta-bg" />
           <div className="wrap">
-            <h2>Secure It. Design It. Build It. Start Today!</h2>
+            <h2>Build It. Automate It. Secure It. Start Today!</h2>
             <p>
-              Tell us what you need, whether it is a security test, a new
-              logo, a website or a premium tool, and we will come back to you
+              Tell us what you need, whether it is a website, an automation,
+              a security test or a product idea, and we will come back to you
               with a plan and a price.
             </p>
-            <RequestButton className="btn">Request Access</RequestButton>
+            <RequestButton className="btn">Contact Us</RequestButton>
           </div>
         </section>
 
@@ -289,7 +339,7 @@ export default function Home() {
                 from there.
               </p>
             </div>
-            <RequestButton className="btn">Request Access</RequestButton>
+            <RequestButton className="btn">Contact Us</RequestButton>
           </div>
 
           <div className="footer-grid">
@@ -316,14 +366,11 @@ export default function Home() {
             <div>
               <h5>Services</h5>
               <ul>
-                {pillars.map((pillar) => (
-                  <li key={pillar.id}>
-                    <a href="#services">{pillar.title}</a>
+                {areas.map((area) => (
+                  <li key={area.id}>
+                    <a href={area.id === "security" ? "#security" : "#services"}>{area.title}</a>
                   </li>
                 ))}
-                <li>
-                  <a href="#catalog">Premium Tools</a>
-                </li>
               </ul>
             </div>
             <div>

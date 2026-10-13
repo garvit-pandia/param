@@ -1,31 +1,90 @@
-import { catalog } from "./catalog";
+import { work } from "./work";
 
-export type PillarId = "security" | "design" | "web";
+export type AreaId = "software" | "ai" | "security" | "saas";
 
 // Edit the text below to match exactly what you offer.
 
-/** The three cards under the hero. */
-export const pillars: { id: PillarId; title: string; text: string }[] = [
+/** The four cards under the hero: everything we do, at a glance. */
+export const areas: { id: AreaId; title: string; text: string }[] = [
+  {
+    id: "software",
+    title: "Software Development",
+    text: "Websites, web applications, business dashboards, APIs and custom software built around the way you work.",
+  },
+  {
+    id: "ai",
+    title: "AI & Business Automation",
+    text: "Chatbots, AI integrations, workflow automation and document processing that take the busywork off your team.",
+  },
   {
     id: "security",
-    title: "Cybersecurity",
-    text: "Penetration testing, security audits and hardening that find the weak points in your systems before attackers do.",
+    title: "Cybersecurity & OSINT",
+    text: "VAPT, application security, cloud assessments and digital exposure intelligence, before attackers get there first.",
   },
   {
-    id: "design",
-    title: "Graphic Design",
-    text: "Logos, brand identity, social media creatives and print designs that make your business look sharp everywhere.",
+    id: "saas",
+    title: "SaaS Products",
+    text: "Launch your own subscription software, security automation or OSINT platform, taken from idea to live product.",
+  },
+];
+
+export type SecurityService = {
+  id: "vapt" | "osint" | "cloud";
+  badge: string;
+  title: string;
+  summary: string;
+  /** What is covered, shown as the tick list on the card. */
+  checks: string[];
+  /** The service we lead with gets the brighter card. */
+  featured?: boolean;
+};
+
+/** The three security cards. The order here is the order on the page. */
+export const securityServices: SecurityService[] = [
+  {
+    id: "vapt",
+    badge: "FLAGSHIP",
+    title: "VAPT & Penetration Testing",
+    summary: "We attack your systems the way a real intruder would, then confirm the fixes hold.",
+    checks: [
+      "Web application penetration testing",
+      "API security testing",
+      "Network and infrastructure testing",
+      "Mobile application security testing",
+      "Vulnerability assessment and remediation verification",
+    ],
+    featured: true,
   },
   {
-    id: "web",
-    title: "Web Development",
-    text: "Fast, responsive websites and web apps built with modern tools, from a single landing page to a full product.",
+    id: "osint",
+    badge: "OSINT",
+    title: "OSINT & Digital Exposure Intelligence",
+    summary: "See what the open internet already reveals about your business.",
+    checks: [
+      "External attack-surface discovery",
+      "Domain and subdomain exposure analysis",
+      "Publicly exposed credentials and data checks",
+      "Brand impersonation and phishing-domain monitoring",
+      "Threat intelligence and digital footprint assessments",
+    ],
+  },
+  {
+    id: "cloud",
+    badge: "CLOUD",
+    title: "Cloud & Infrastructure Security",
+    summary: "Close the gaps in the accounts, servers and storage you run on.",
+    checks: [
+      "AWS, Azure and Google Cloud configuration reviews",
+      "Identity and access management reviews",
+      "Server and firewall configuration assessments",
+      "Cloud storage exposure checks",
+      "Security hardening recommendations",
+    ],
   },
 ];
 
 export type ServiceItem = {
   id: string;
-  pillar: PillarId;
   title: string;
   text: string;
 };
@@ -33,145 +92,80 @@ export type ServiceItem = {
 /** "Our Services": the first three sit on the left, the last three on the right. */
 export const serviceItems: ServiceItem[] = [
   {
-    id: "vapt",
-    pillar: "security",
-    title: "VAPT Services",
-    text: "Vulnerability assessment and penetration testing for networks, applications and systems, with fixes ranked by risk.",
+    id: "websites",
+    title: "Websites & Web Apps",
+    text: "Landing pages, business websites and full web applications with React and Next.js, including interactive 3D.",
   },
   {
-    id: "web-security",
-    pillar: "security",
-    title: "Web Security Testing",
-    text: "Testing of websites, web apps and APIs for the flaws that lead to breaches, defacement and data loss.",
+    id: "software",
+    title: "Dashboards & Custom Software",
+    text: "Business dashboards, APIs and custom software shaped around the way your team already works.",
   },
   {
-    id: "hardening",
-    pillar: "security",
-    title: "Security Hardening",
-    text: "Server and network hardening, plus an exposure review of your own domains and accounts.",
+    id: "automation",
+    title: "AI & Workflow Automation",
+    text: "Chatbots, AI integrations and document processing that turn repetitive work into a workflow that runs itself.",
+  },
+  {
+    id: "testing",
+    title: "Security Testing & OSINT",
+    text: "Penetration tests, cloud reviews and digital exposure checks, reported with fixes ranked by risk.",
+  },
+  {
+    id: "products",
+    title: "SaaS Product Builds",
+    text: "Subscription software taken from first idea to launch, including security automation and OSINT platforms.",
   },
   {
     id: "branding",
-    pillar: "design",
-    title: "Brand & Logo Design",
-    text: "Logos, colour palettes and brand kits that keep your business consistent everywhere it shows up.",
-  },
-  {
-    id: "creatives",
-    pillar: "design",
-    title: "Social Media Creatives",
-    text: "Posts, ad creatives, posters, banners and thumbnails designed to stop the scroll.",
-  },
-  {
-    id: "websites",
-    pillar: "web",
-    title: "Website Development",
-    text: "Landing pages, business websites and web apps with React and Next.js, including interactive 3D.",
+    title: "Brand & Graphic Design",
+    text: "Logos, brand kits and social media creatives that keep your business consistent everywhere it shows up.",
   },
 ];
 
 /** Tick list in the "About us" section. */
 export const highlights = [
-  "Penetration Testing (VAPT)",
-  "Web & API Security",
-  "Logo & Brand Design",
-  "Social Media Creatives",
   "Websites & Web Apps",
-  "Premium Tool Activations",
+  "Custom Software & APIs",
+  "AI & Workflow Automation",
+  "Penetration Testing (VAPT)",
+  "OSINT & Exposure Checks",
+  "Cloud Security Reviews",
 ];
 
-export const productCount = catalog.reduce(
-  (total, category) => total + category.products.length,
+const checkCount = securityServices.reduce(
+  (total, service) => total + service.checks.length,
   0,
 );
 
-export type Track = {
-  id: "services" | "catalog";
-  badge: string;
-  title: string;
-  price: string;
-  priceNote: string;
-  summary: string;
-  features: string[];
-  cta: string;
-};
-
-/** The two cards that explain the two ways to work with us. */
-export const tracks: Track[] = [
-  {
-    id: "services",
-    badge: "SERVICES",
-    title: "Project Work",
-    price: "Custom Quote",
-    priceNote: "/project",
-    summary: "Security, design and web projects priced to your scope",
-    features: [
-      "Vulnerability assessment & penetration testing",
-      "Web application & API security testing",
-      "Network and server hardening",
-      "Clear reports with fixes ranked by risk",
-      "Logos & brand identity",
-      "Social media posts & ad creatives",
-      "Posters, banners & thumbnails",
-      "Landing pages & business websites",
-      "Web apps with React & Next.js",
-      "Interactive 3D with Three.js / WebGL",
-      "Deployment, domains & hosting setup",
-    ],
-    cta: "Get a Quote",
-  },
-  {
-    id: "catalog",
-    badge: "PREMIUM TOOLS",
-    title: "Premium Catalog",
-    price: "Best Price",
-    priceNote: "guaranteed",
-    summary: "Premium tools and subscriptions on your own account",
-    features: [
-      `${productCount}+ premium tools & subscriptions`,
-      "AI, dev & automation tools",
-      "Design, video & creator tools",
-      "Content & writing tools",
-      "Business & collaboration tools",
-      "Education & career plans",
-      "Lifetime licences & keys",
-      "Activated on your own account",
-      "Instant delivery once payment is verified",
-      "Genuine activations",
-      "Found it cheaper? We will beat the price",
-    ],
-    cta: "Browse Catalog",
-  },
-];
-
-/** Numbers shown in the counter strip. The first two are counted from the catalog. */
+/** Numbers shown in the counter strip. The first three are counted from the data files. */
 export const stats = [
-  { id: "tools", value: productCount, suffix: "+", label: "Premium Tools" },
-  { id: "categories", value: catalog.length, suffix: "", label: "Tool Categories" },
-  { id: "genuine", value: 100, suffix: "%", label: "Genuine Activations" },
-  { id: "delivery", value: 24, suffix: "/7", label: "Instant Delivery" },
+  { id: "areas", value: areas.length, suffix: "", label: "Service Areas" },
+  { id: "sites", value: work.length, suffix: "", label: "Websites Designed" },
+  { id: "checks", value: checkCount, suffix: "", label: "Security Checks" },
+  { id: "permission", value: 100, suffix: "%", label: "Permission-Based Testing" },
 ] as const;
 
 /** Rows in "Why choose us". */
 export const reasons = [
   {
-    id: "instant",
-    title: "Instant Activation",
-    text: "No waiting periods. Get your premium access deployed the moment your payment is verified.",
+    id: "permission",
+    title: "Permission First",
+    text: "We only test systems you own or are authorised to test, and only after written permission.",
   },
   {
-    id: "private",
-    title: "Private & Secure",
-    text: "Unlike shared accounts, our tools are activated exclusively on your own email or custom accounts.",
+    id: "reports",
+    title: "Fixes Ranked by Risk",
+    text: "Every finding comes with a clear fix, sorted by how much it matters, and a re-test once it is patched.",
+  },
+  {
+    id: "team",
+    title: "Builders Who Think Like Attackers",
+    text: "The team that writes your software also knows how it gets broken into, so security is built in from day one.",
   },
   {
     id: "price",
-    title: "Best Price Guarantee",
-    text: "Found a cheaper deal? Tell us the price and we will beat it. Unmatched rates in the market.",
-  },
-  {
-    id: "trusted",
-    title: "DTS / NSD Trusted",
-    text: "Vetted and verified premium setups, backed by our promise of quality.",
+    title: "Priced to Your Scope",
+    text: "You get a plan and a custom quote for the project in front of you before any work starts.",
   },
 ] as const;

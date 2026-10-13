@@ -23,6 +23,20 @@ All from **3dicons** by Vijay Verma (https://3dicons.co, source at https://githu
 
 The photos were found through Openverse (https://openverse.org) with the search limited to CC0 and public-domain results.
 
+## Website screenshots (`images/work/`)
+
+Screenshots of the home pages of websites we designed and built ourselves, taken on 13 October 2026 at 1440 × 900 and saved at 1200 × 750. They are our own work, so no outside licence applies. The sites and their addresses are listed in `data/work.ts`.
+
+| File | Site |
+|---|---|
+| `shivaay.webp` | Shivaay Logistics, https://www.shivaaylogistics.in |
+| `umesh.webp` | Shri Umesh Son's, https://umesh-sons.vercel.app |
+| `photographer.webp` | Concept design: Meera Kapoor, wedding photographer |
+| `architect.webp` | Concept design: Arjun Sethi Architects |
+| `clinic.webp` | Concept design: Hitesh Clinic |
+
+When a site changes, retake its screenshot at the same size so the cards stay aligned.
+
 ## Adding a picture
 
 Only use images whose licence allows commercial use, and add a row here with the source link before committing the file.

@@ -5,7 +5,6 @@
     --panel-deep: #031007;
     --green: #00ff00;
     --mint: #00e58a;
-    --blue: #3b82f6;
     --red: #ff3b3b;
     --text: #e5e5e5;
     --muted: #cecece;
@@ -77,11 +76,6 @@ button {
 
 .green {
     color: var(--green);
-}
-
-.center {
-    text-align: center;
-    margin-top: 40px;
 }
 
 .section {
@@ -172,6 +166,16 @@ button {
     top: 12px;
 }
 
+/* read out by screen readers, not shown */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
 /* phone-only bar with the two main actions; switched on in the small-screen rules */
 .mobile-cta {
     display: none;
@@ -221,7 +225,7 @@ button {
 .site-nav ul {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 26px;
 }
 
 .site-nav a {
@@ -442,10 +446,10 @@ button {
     transform: none;
 }
 
-/* --- THREE PILLARS --- */
+/* --- SERVICE AREAS --- */
 .pillar-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
 
@@ -473,7 +477,8 @@ button {
 }
 
 .pillar h3 {
-    font-size: 24px;
+    font-size: 22px;
+    line-height: 1.3;
     color: var(--green);
 }
 
@@ -487,14 +492,25 @@ button {
     transform: scale(1.05);
 }
 
-/* --- PLAN CARDS --- */
-.track-grid {
+/* --- SECURITY CARDS --- */
+.section-kicker {
+    margin-bottom: 32px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 40px;
+    color: var(--text);
+}
+
+.section-head .section-kicker {
+    margin-bottom: 0;
+}
+
+.plan-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
-    max-width: 896px;
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 12px 16px 0;
 }
 
 .plan-card {
@@ -529,21 +545,11 @@ button {
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 
-.plan-card h2 {
+.plan-card h3 {
     font-size: 20px;
+    line-height: 1.3;
     color: #fff;
     margin-bottom: 12px;
-}
-
-.plan-price {
-    margin-bottom: 12px;
-    color: var(--dim);
-}
-
-.plan-price strong {
-    font-size: 30px;
-    font-weight: 800;
-    color: var(--green);
 }
 
 .plan-summary {
@@ -563,7 +569,7 @@ button {
 
 .check-list li {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 12px;
     font-size: 14px;
     color: #4ade80;
@@ -573,132 +579,14 @@ button {
     flex: none;
     width: 16px;
     height: 16px;
+    /* lines the tick up with the first line of text when an item wraps */
+    margin-top: 3px;
 }
 
-.plan-catalog {
-    border: 2px solid var(--blue);
-}
-
-.plan-catalog:hover {
-    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.25);
-}
-
-.plan-catalog .pill-badge {
-    background: #2563eb;
-}
-
-.plan-catalog .plan-price strong {
-    color: #60a5fa;
-}
-
-.plan-catalog .btn {
-    background: linear-gradient(to right, #2563eb, #1d4ed8);
-}
-
-/* --- CATALOG --- */
-.section-kicker {
-    margin-bottom: 32px;
-    text-align: center;
-    font-size: 30px;
-    line-height: 40px;
-    color: var(--text);
-}
-
-.tile-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
-    gap: 24px;
-    padding: 0 20px;
-}
-
-.tile {
-    /* a column, so every tile's artwork lines up even when a label wraps */
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.tile:hover {
-    transform: scale(1.05);
-}
-
-.tile-art {
-    display: grid;
-    place-items: center;
-    height: 144px;
-    margin-bottom: 16px;
-    border-radius: 6px;
-    background: linear-gradient(to right, #00ff00, #000);
-    transition: box-shadow 0.3s ease;
-}
-
-.tile-art img {
-    width: auto;
-    height: 78%;
-    filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.45));
-}
-
-.tile-label {
-    font-size: 17px;
-    font-weight: 600;
-    color: #fff;
-}
-
-.tile.active .tile-art {
-    box-shadow: 0 0 0 2px #fff, 0 0 26px rgba(0, 255, 0, 0.65);
-}
-
-.tile.active .tile-label {
-    color: var(--green);
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 32px 20px;
-    margin-top: 56px;
-    padding: 0 20px;
-}
-
-.product-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 30px 20px 20px;
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    background: #000;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
-}
-
-.product-card h3 {
-    font-size: 18px;
-    line-height: 1.3;
-    color: #fff;
-}
-
-.product-card p {
-    flex: 1;
-    margin-bottom: 12px;
-    font-size: 13px;
-    color: var(--dim);
-}
-
-.product-card .btn {
-    padding: 10px 16px;
-    font-size: 14px;
-}
-
-.product-card .btn:hover {
-    transform: scale(1.04);
+/* the service we lead with */
+.plan-featured {
+    border: 2px solid var(--green);
+    box-shadow: 0 0 26px rgba(0, 255, 0, 0.18);
 }
 
 /* --- TWO-COLUMN SECTIONS (about, why choose us) --- */
@@ -1019,6 +907,107 @@ button {
 
 .service-col-right .service-item:nth-child(2) {
     margin-left: 36px;
+}
+
+/* --- OUR WORK --- */
+/* six tracks: a live site takes three of them, a concept design takes two */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 40px 24px;
+}
+
+.work-card {
+    position: relative;
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-live {
+    grid-column: span 3;
+}
+
+.work-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
+}
+
+.work-shot {
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    border-radius: 15px 15px 0 0;
+    background: var(--panel-deep);
+}
+
+.work-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.work-card:hover .work-shot img {
+    transform: scale(1.04);
+}
+
+.work-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 20px 22px 22px;
+}
+
+.work-trade {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--dim);
+}
+
+.work-body h4 {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: var(--green);
+}
+
+.work-body p {
+    flex: 1;
+    font-size: 15px;
+    color: var(--muted);
+}
+
+.work-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--green);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.work-card:hover .work-link {
+    border-color: var(--green);
+}
+
+.work-link svg {
+    width: 16px;
+    height: 16px;
+}
+
+.work-cta {
+    margin-top: 48px;
+    text-align: center;
 }
 
 /* --- CALL TO ACTION --- */
@@ -1385,8 +1374,8 @@ button {
     }
 }
 
-/* --- MENU BUTTON (the full nav needs about 1170px) --- */
-@media (max-width: 1200px) {
+/* --- MENU BUTTON (the full nav needs about 1230px) --- */
+@media (max-width: 1240px) {
     .menu-toggle {
         display: block;
     }
@@ -1433,6 +1422,25 @@ button {
 }
 
 @media (max-width: 1100px) {
+    .pillar-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .plan-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        max-width: 560px;
+    }
+
+    .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .work-card,
+    .work-live {
+        grid-column: auto;
+    }
+
     .service-layout {
         grid-template-columns: 1fr;
         gap: 44px;
@@ -1537,9 +1545,8 @@ button {
         bottom: 84px;
     }
 
-    .pillar-grid,
-    .track-grid,
-    .split {
+    .split,
+    .work-grid {
         grid-template-columns: 1fr;
     }
 
@@ -1606,63 +1613,8 @@ button {
     }
 
     .pillar-grid {
+        grid-template-columns: 1fr;
         gap: 14px;
-    }
-
-    /* categories become one swipeable row instead of four rows of tiles */
-    .tile-grid {
-        display: flex;
-        gap: 12px;
-        margin: 0 -20px;
-        padding: 6px 20px 12px;
-        overflow-x: auto;
-        scroll-snap-type: x proximity;
-        scroll-padding-left: 20px;
-        scrollbar-width: none;
-    }
-
-    .tile-grid::-webkit-scrollbar {
-        display: none;
-    }
-
-    .tile {
-        flex: 0 0 118px;
-        scroll-snap-align: start;
-    }
-
-    .tile:hover {
-        transform: none;
-    }
-
-    .tile-art {
-        height: 104px;
-        margin-bottom: 10px;
-    }
-
-    .tile-label {
-        font-size: 14px;
-    }
-
-    /* two compact product cards per row */
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 26px 12px;
-        margin-top: 36px;
-        padding: 0;
-    }
-
-    .product-card {
-        padding: 24px 12px 12px;
-        gap: 6px;
-    }
-
-    .product-card h3 {
-        font-size: 15px;
-        overflow-wrap: anywhere;
-    }
-
-    .product-card p {
-        font-size: 12px;
     }
 
     .plan-card {

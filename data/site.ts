@@ -2,14 +2,14 @@
 export const site = {
   nameFirst: "Hackers",
   nameAccent: "Family",
-  title: "Hackers Family | Cybersecurity, Design & Web Development",
+  title: "Hackers Family | Software, AI Automation & Cybersecurity",
   description:
-    "Cybersecurity services, graphic design and website development from Hackers Family, plus premium tools and subscriptions at the best prices.",
+    "Software development, AI and business automation, and cybersecurity from Hackers Family: penetration testing, OSINT and cloud security reviews under one roof.",
   tagline:
-    "Cybersecurity, graphic design and website development, plus premium tools at the best prices.",
+    "Software development, AI automation and cybersecurity, from the first build to the final penetration test.",
   notes: [
     "Security testing is carried out only with the owner's written permission.",
-    "Instant delivery & genuine activations.",
+    "Exposure checks cover only the domains, brands and accounts you own.",
   ],
   copyright: "Copyright © 2026 Hackers Family. All rights reserved.",
 } as const;
@@ -19,8 +19,9 @@ export const siteName = `${site.nameFirst} ${site.nameAccent}`;
 // Links shown in the header and in the footer's "Quick Links".
 export const navLinks = [
   { href: "#home", label: "Home" },
-  { href: "#catalog", label: "Catalog" },
+  { href: "#security", label: "Security" },
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
+  { href: "#work", label: "Our Work" },
   { href: "#faq", label: "FAQ" },
 ] as const;

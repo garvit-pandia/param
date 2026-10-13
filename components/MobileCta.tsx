@@ -18,11 +18,11 @@ export function MobileCta() {
 
   return (
     <div className={`mobile-cta${show ? " show" : ""}`} aria-hidden={!show}>
-      <a href="#catalog" className="btn btn-ghost" tabIndex={show ? 0 : -1}>
-        Browse Tools
+      <a href="#services" className="btn btn-ghost" tabIndex={show ? 0 : -1}>
+        Our Services
       </a>
       <RequestButton className="btn" tabIndex={show ? 0 : -1}>
-        Request Access
+        Contact Us
       </RequestButton>
     </div>
   );
