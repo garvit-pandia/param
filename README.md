@@ -24,8 +24,8 @@ The port is fixed in `package.json`. If 5184 is busy, find what is using it (`ss
 
 | What | Where |
 |---|---|
-| Brand name, nav links, tagline, footer notes | `data/site.ts` |
-| Service areas, security cards, service list, counters, "why choose us" | `data/services.ts` |
+| Brand name, nav links, tagline, footer notes, contact emails, website credit | `data/site.ts` |
+| Service areas, security cards, service list, "how it works" steps, counters, "why choose us" | `data/services.ts` |
 | Websites shown in "Our Work" | `data/work.ts`, with a screenshot of the same name in `images/work/` |
 | FAQ questions and answers | `data/faq.ts` |
 | Photos and 3D icons | files in `images/`, wired up in `data/images.ts` |
@@ -35,7 +35,11 @@ The port is fixed in `package.json`. If 5184 is busy, find what is using it (`ss
 
 ## Request form
 
-The form opens from the header ("Contact Us") and from any service or security card ("Get a Quote"), with the message pre-filled. It is not connected to a backend yet: `lib/submit-request.ts` is the one function to fill in. Until then the form tells the visitor the request was not sent.
+The form opens from the header ("Start a project") and from any service or security card ("Get a quote"), with the message pre-filled. It is not connected to a backend yet: `lib/submit-request.ts` is the one function to fill in. Until then the form tells the visitor the request was not sent.
+
+## Accessibility
+
+The page is built to WCAG 2.2 AA: one `<h1>` and ordered headings, labelled landmarks, a skip link, AA colour contrast, 44 px touch targets, a keyboard-friendly menu and form, an announced form status, and no motion for people who ask for reduced motion.
 
 ## Stack
 

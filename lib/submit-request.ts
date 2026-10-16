@@ -1,3 +1,5 @@
+import { contactEmails } from "@/data/site";
+
 // Field names match the columns of the old `service_requests` table.
 export type AccessRequest = {
   full_name: string;
@@ -18,6 +20,6 @@ export async function submitRequest(
   void request;
   return {
     ok: false,
-    message: "Requests can't be sent from this form yet. Please check back soon.",
+    message: `Requests can't be sent from this form yet. Please email us at ${contactEmails[0]} instead.`,
   };
 }

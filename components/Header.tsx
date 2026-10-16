@@ -1,42 +1,52 @@
 "use client";
 
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import { navLinks, site } from "@/data/site";
 import { LogoMark } from "./graphics";
 import { useRequestAccess } from "./RequestAccess";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const toggle = useRef<HTMLButtonElement>(null);
   const openRequest = useRequestAccess();
-  const request = (topic?: string) => {
-    setOpen(false);
-    openRequest(topic);
-  };
+
+  // Escape closes the phone menu and puts focus back on the menu button.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggle.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
     <header className="site-header">
       <div className="wrap header-row">
-        <a href="#home" className="logo" onClick={() => setOpen(false)}>
+        <a href="#top" className="logo" onClick={() => setOpen(false)}>
           <LogoMark className="logo-mark" />
           <span>
-            {site.nameFirst.toUpperCase()}
-            <span className="logo-accent">{site.nameAccent.toUpperCase()}</span>
+            {site.nameFirst} <span className="logo-accent">{site.nameAccent}</span>
           </span>
         </a>
 
         <button
+          ref={toggle}
           type="button"
-          className="menu-toggle"
+          className="icon-btn menu-toggle"
           aria-expanded={open}
           aria-controls="site-nav"
-          aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((value) => !value)}
         >
           {open ? <X aria-hidden /> : <Menu aria-hidden />}
+          <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
         </button>
 
-        <nav id="site-nav" className={`site-nav${open ? " open" : ""}`}>
+        <nav id="site-nav" aria-label="Main" className={`site-nav${open ? " open" : ""}`}>
           <ul>
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -45,17 +55,18 @@ export function Header() {
                 </a>
               </li>
             ))}
-            <li>
-              <button type="button" className="btn" onClick={() => request("A project quote")}>
-                Get a Quote
-              </button>
-            </li>
-            <li>
-              <button type="button" className="btn" onClick={() => request()}>
-                Contact Us
-              </button>
-            </li>
           </ul>
+          <button
+            type="button"
+            className="btn btn-primary"
+            aria-haspopup="dialog"
+            onClick={() => {
+              setOpen(false);
+              openRequest();
+            }}
+          >
+            Start a project <ArrowRight aria-hidden />
+          </button>
         </nav>
       </div>
     </header>

@@ -84,12 +84,12 @@ export const securityServices: SecurityService[] = [
 ];
 
 export type ServiceItem = {
-  id: string;
+  id: "websites" | "software" | "automation" | "testing" | "products" | "branding";
   title: string;
   text: string;
 };
 
-/** "Our Services": the first three sit on the left, the last three on the right. */
+/** "Our services", in the order they appear. */
 export const serviceItems: ServiceItem[] = [
   {
     id: "websites",
@@ -138,34 +138,58 @@ const checkCount = securityServices.reduce(
   0,
 );
 
-/** Numbers shown in the counter strip. The first three are counted from the data files. */
+/** Numbers shown under "About us". The first three are counted from the data files. */
 export const stats = [
-  { id: "areas", value: areas.length, suffix: "", label: "Service Areas" },
-  { id: "sites", value: work.length, suffix: "", label: "Websites Designed" },
-  { id: "checks", value: checkCount, suffix: "", label: "Security Checks" },
-  { id: "permission", value: 100, suffix: "%", label: "Permission-Based Testing" },
+  { id: "areas", value: areas.length, suffix: "", label: "Service areas" },
+  { id: "sites", value: work.length, suffix: "", label: "Websites designed" },
+  { id: "checks", value: checkCount, suffix: "", label: "Security checks" },
+  { id: "permission", value: 100, suffix: "%", label: "Permission-based testing" },
+] as const;
+
+/** "How it works", in order. */
+export const steps = [
+  {
+    id: "brief",
+    title: "Tell us what you need",
+    text: "Send a short note through the form: a website, an automation, a security test or a product idea.",
+  },
+  {
+    id: "plan",
+    title: "Get a plan and a price",
+    text: "We reply with the scope, the timeline and a quote before any work starts.",
+  },
+  {
+    id: "work",
+    title: "We build and test",
+    text: "You get updates along the way. Security testing only begins with the owner's written permission.",
+  },
+  {
+    id: "handover",
+    title: "Handover",
+    text: "You receive the live site, the working automation or the report, explained in plain language.",
+  },
 ] as const;
 
 /** Rows in "Why choose us". */
 export const reasons = [
   {
     id: "permission",
-    title: "Permission First",
+    title: "Permission first",
     text: "We only test systems you own or are authorised to test, and only after written permission.",
   },
   {
     id: "reports",
-    title: "Fixes Ranked by Risk",
+    title: "Fixes ranked by risk",
     text: "Every finding comes with a clear fix, sorted by how much it matters, and a re-test once it is patched.",
   },
   {
     id: "team",
-    title: "Builders Who Think Like Attackers",
+    title: "Builders who think like attackers",
     text: "The team that writes your software also knows how it gets broken into, so security is built in from day one.",
   },
   {
     id: "price",
-    title: "Priced to Your Scope",
+    title: "Priced to your scope",
     text: "You get a plan and a custom quote for the project in front of you before any work starts.",
   },
 ] as const;

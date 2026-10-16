@@ -9,21 +9,20 @@ export function MobileCta() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const hero = document.getElementById("home");
+    const hero = document.getElementById("top");
     if (!hero) return;
     const observer = new IntersectionObserver(([entry]) => setShow(!entry.isIntersecting));
     observer.observe(hero);
     return () => observer.disconnect();
   }, []);
 
+  // `inert` keeps the hidden bar out of the tab order and away from screen readers.
   return (
-    <div className={`mobile-cta${show ? " show" : ""}`} aria-hidden={!show}>
-      <a href="#services" className="btn btn-ghost" tabIndex={show ? 0 : -1}>
-        Our Services
+    <div className={`mobile-cta${show ? " show" : ""}`} inert={!show}>
+      <a href="#services" className="btn btn-ghost">
+        Our services
       </a>
-      <RequestButton className="btn" tabIndex={show ? 0 : -1}>
-        Contact Us
-      </RequestButton>
+      <RequestButton className="btn btn-primary">Start a project</RequestButton>
     </div>
   );
 }

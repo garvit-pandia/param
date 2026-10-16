@@ -11,17 +11,28 @@ export const site = {
     "Security testing is carried out only with the owner's written permission.",
     "Exposure checks cover only the domains, brands and accounts you own.",
   ],
-  copyright: "Copyright © 2026 Hackers Family. All rights reserved.",
+  copyright: "© 2026 Hackers Family. All rights reserved.",
 } as const;
 
 export const siteName = `${site.nameFirst} ${site.nameAccent}`;
 
-// Links shown in the header and in the footer's "Quick Links".
+/** Where people can write to Hackers Family. Shown in the footer, the call to action and the request form. */
+export const contactEmails = ["hackersfamily213@gmail.com", "hackersfamily213@outlook.com"] as const;
+
+/** Who designed and built the website, shown at the bottom of the footer. */
+export const credit = {
+  name: "Garvit Pandia",
+  email: "mail@garvitpandia.me",
+  portfolio: "https://garvitpandia.me",
+  portfolioLabel: "garvitpandia.me",
+} as const;
+
+// Links shown in the header and in the footer. Each href matches a section id on the page.
 export const navLinks = [
-  { href: "#home", label: "Home" },
-  { href: "#security", label: "Security" },
-  { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
+  { href: "#security", label: "Security" },
   { href: "#work", label: "Our Work" },
+  { href: "#process", label: "How it works" },
+  { href: "#about", label: "About" },
   { href: "#faq", label: "FAQ" },
 ] as const;

@@ -56,4 +56,4 @@ export const work: WorkItem[] = [
   },
 ];
 
-export const workLabels = { live: "LIVE SITE", concept: "CONCEPT DESIGN" } as const;
+export const workLabels = { live: "Live site", concept: "Concept design" } as const;

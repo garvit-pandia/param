@@ -1,17 +1,27 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Roboto_Serif } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { photos } from "@/data/images";
 import { site, siteName } from "@/data/site";
 import "./globals.css";
 
-const robotoSerif = Roboto_Serif({
-  variable: "--font-roboto-serif",
+// Only the weights the stylesheet uses. Fixed weights instead of the variable
+// fonts keep the first layout of the page fast on low-end phones.
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  weight: ["600", "700"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  weight: "500",
 });
 
 // Vercel sets this to the live domain at build time; locally it falls back to the dev URL.
@@ -24,7 +34,7 @@ const shareImage = {
   url: photos.laptopCode.src,
   width: photos.laptopCode.width,
   height: photos.laptopCode.height,
-  alt: "A laptop showing green code in a dark room",
+  alt: "A laptop screen filled with lines of code",
 };
 
 export const metadata: Metadata = {
@@ -48,19 +58,17 @@ export const metadata: Metadata = {
 
 // Colours the phone browser's address bar to match the page.
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#050914",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${robotoSerif.variable} ${jetbrainsMono.variable}`}>
-      <body>
-        {/* Scroll animations start hidden; without JavaScript, show everything. */}
-        <noscript>
-          <style>{".reveal{opacity:1!important;transform:none!important}"}</style>
-        </noscript>
-        {children}
-      </body>
+    <html
+      lang="en"
+      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+    >
+      <body>{children}</body>
     </html>
   );
 }

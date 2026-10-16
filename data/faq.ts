@@ -1,4 +1,6 @@
-// Questions shown in the FAQ section. Edit freely; the page numbers them for you.
+import { contactEmails } from "./site";
+
+// Questions shown in the FAQ section. Edit freely.
 export const faq = [
   {
     question: "What does Hackers Family do?",
@@ -8,7 +10,7 @@ export const faq = [
   {
     question: "How do I request a service?",
     answer:
-      "Press Get a Quote on any service, or Contact Us in the header. Fill in the short form and tell us what you need, and we will get back to you with a plan and a price.",
+      `Press Get a quote on any service, or Start a project at the top of the page. Fill in the short form and tell us what you need, and we will get back to you with a plan and a price. You can also email us at ${contactEmails[0]} or ${contactEmails[1]}.`,
   },
   {
     question: "Can I see websites you have built?",

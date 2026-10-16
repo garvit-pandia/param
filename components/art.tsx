@@ -1,5 +1,6 @@
 import Image, { type StaticImageData } from "next/image";
-import { accents, photos } from "@/data/images";
+import { areaIcons, photos } from "@/data/images";
+import { areas } from "@/data/services";
 
 /** A 3D icon at a fixed size. Decorative, so screen readers skip it. */
 export function Icon3D({
@@ -12,26 +13,51 @@ export function Icon3D({
   className?: string;
 }) {
   return (
-    <Image src={src} alt="" width={size} height={size} sizes={`${size}px`} className={className} />
+    <Image
+      src={src}
+      alt=""
+      width={size}
+      height={size}
+      sizes={`${size}px`}
+      className={`icon3d${className ? ` ${className}` : ""}`}
+    />
   );
 }
 
-/** Hero picture: a laptop running green code, with floating icons. */
+// The short line under each floating card's title, keyed by service area.
+const heroLines = {
+  software: "Websites & web apps",
+  ai: "Chatbots & workflows",
+  security: "VAPT & cloud reviews",
+} as const;
+
+const heroAreas = areas.filter((area) => area.id in heroLines);
+
+/** Hero picture: a laptop full of code, with floating cards for three of the service areas. */
 export function HeroArt() {
   return (
-    <div className="hero-photo">
-      <Image
-        src={photos.laptopCode}
-        alt="A laptop showing green code in a dark room"
-        sizes="(max-width: 900px) 320px, 34vw"
-        preload
-        className="hero-photo-img"
-      />
-      <Icon3D src={accents.shield} size={120} className="hero-chip hero-chip-shield float f0" />
-      <Icon3D src={accents.lock} size={84} className="hero-chip hero-chip-lock float f2" />
-      <span className="scene-tag">
-        <i aria-hidden /> System Secured
-      </span>
+    <div className="hero-art">
+      <div className="hero-frame">
+        <Image
+          src={photos.laptopCode}
+          alt="A laptop screen filled with lines of code"
+          sizes="(max-width: 900px) 92vw, 560px"
+          placeholder="blur"
+          preload
+        />
+      </div>
+      {/* the cards repeat the service areas listed below, so they are hidden from screen readers */}
+      <ul className="hero-cards" aria-hidden>
+        {heroAreas.map((area, i) => (
+          <li key={area.id} className={`hero-card hero-card-${i + 1}`}>
+            <Icon3D src={areaIcons[area.id]} size={48} />
+            <span>
+              <strong>{area.title}</strong>
+              {heroLines[area.id as keyof typeof heroLines]}
+            </span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -42,7 +68,7 @@ export function AboutArt() {
     <div className="collage">
       <Image
         src={photos.codeScreen}
-        alt="Website code on a monitor"
+        alt="Lines of code on a screen"
         sizes="(max-width: 900px) 80vw, 460px"
         placeholder="blur"
         className="collage-main"
@@ -50,41 +76,11 @@ export function AboutArt() {
       <Image
         src={photos.wireframes}
         alt="Hand-drawn website wireframes in a notebook"
-        sizes="(max-width: 900px) 50vw, 290px"
+        sizes="(max-width: 900px) 50vw, 280px"
         placeholder="blur"
         className="collage-inset"
       />
-      <Icon3D src={accents.shield} size={130} className="collage-badge float f1" />
-    </div>
-  );
-}
-
-/** "Why choose us" picture: padlocks on a keyboard. */
-export function GuardArt() {
-  return (
-    <div className="frame-photo">
-      <Image
-        src={photos.padlocks}
-        alt="Two padlocks chained together on a laptop keyboard"
-        sizes="(max-width: 900px) 86vw, 560px"
-        placeholder="blur"
-      />
-      <Icon3D src={accents.tick} size={110} className="frame-badge float f0" />
-    </div>
-  );
-}
-
-/** Centre piece of "Our Services": a circuit board cut to a hexagon behind a shield. */
-export function CoreArt() {
-  return (
-    <div className="core">
-      <span className="core-ring" aria-hidden />
-      <div className="core-glow">
-        <div className="core-hex">
-          <Image src={photos.circuit} alt="" sizes="260px" fill />
-        </div>
-      </div>
-      <Icon3D src={accents.shield} size={150} className="core-icon float f1" />
+      <Icon3D src={areaIcons.security} size={120} className="collage-badge" />
     </div>
   );
 }
